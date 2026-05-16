@@ -10,8 +10,7 @@ The evaluation is broken down into multiple stages, from foundational middleware
 A custom Node.js logging middleware built to replace standard console logging.
 - Supports structured JSON logs.
 - Implements 5 log levels (DEBUG, INFO, WARN, ERROR, FATAL).
-- Features file logging with daily rotation and an Express HTTP middleware drop-in.
-- Strictly used across the rest of the node-based implementations.
+
 
 ### 2. `notification_system_design.md` (Stages 1-5)
 A comprehensive architectural and design markdown document containing:
@@ -24,33 +23,9 @@ A comprehensive architectural and design markdown document containing:
 ### 3. `stage6-priority-inbox/` (Stage 6)
 A Node.js implementation of a "Priority Inbox" algorithm.
 - Uses a **Min-Heap** data structure to extract the top 10 most important unread notifications efficiently in `O(M log N)` time.
-- Prioritization is based on a composite score weighting notification type (`Placement` > `Result` > `Event`) and recency.
-- Integrates the custom `logging-middleware`.
+
 
 ### 4. `stage7-frontend/` (Stage 7)
 A production-ready responsive frontend application built with **Next.js** and **Material UI**.
 - Features a dark-themed, premium UI with smooth micro-animations and gradients.
-- Implements the "All Notifications" view with type filtering, search, and pagination.
-- Implements the "Priority Inbox" view rendering the dynamic top-N priority logic.
-- Tracks "read/viewed" states seamlessly.
 
-## Setup and Installation
-
-To run any of the specific stages, navigate to their respective directories:
-
-**To run the Priority Inbox (Stage 6):**
-```bash
-cd stage6-priority-inbox
-npm install
-npm start
-```
-
-**To run the Next.js Frontend (Stage 7):**
-```bash
-cd stage7-frontend
-npm install
-npm run dev
-```
-
-## Author
-**Manyasrivastava01** (22MIC0051)
