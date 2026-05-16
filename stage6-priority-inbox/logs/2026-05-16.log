@@ -1,0 +1,21 @@
+{"timestamp":"2026-05-16T10:11:25.202Z","level":"INFO","service":"priority-inbox","message":"=== Priority Inbox — Starting ===","topN":10}
+{"timestamp":"2026-05-16T10:11:25.208Z","level":"INFO","service":"priority-inbox","message":"Fetching notifications from API","url":"http://4.224.186.213/evaluation-service/notifications"}
+{"timestamp":"2026-05-16T10:11:25.316Z","level":"ERROR","service":"priority-inbox","message":"Request failed with status code 401","status":401}
+{"timestamp":"2026-05-16T10:11:25.316Z","level":"WARN","service":"priority-inbox","message":"Using sample notification data as fallback"}
+{"timestamp":"2026-05-16T10:11:25.317Z","level":"INFO","service":"priority-inbox","message":"\n══════════════════════════════════════════════════════════════════════════════════════════"}
+{"timestamp":"2026-05-16T10:11:25.318Z","level":"INFO","service":"priority-inbox","message":"  PRIORITY INBOX — Top 10 Notifications"}
+{"timestamp":"2026-05-16T10:11:25.318Z","level":"INFO","service":"priority-inbox","message":"══════════════════════════════════════════════════════════════════════════════════════════"}
+{"timestamp":"2026-05-16T10:11:25.318Z","level":"INFO","service":"priority-inbox","message":"Rank  Type          Message                                 Timestamp               Score"}
+{"timestamp":"2026-05-16T10:11:25.319Z","level":"INFO","service":"priority-inbox","message":"──────────────────────────────────────────────────────────────────────────────────────────"}
+{"timestamp":"2026-05-16T10:11:25.319Z","level":"INFO","service":"priority-inbox","message":"#1    Placement     CSX Corporation hiring                  2026-04-22 17:51:18     3001776860478000"}
+{"timestamp":"2026-05-16T10:11:25.319Z","level":"INFO","service":"priority-inbox","message":"#2    Placement     Advanced Micro Devices Inc. hiring      2026-04-22 17:49:42     3001776860382000"}
+{"timestamp":"2026-05-16T10:11:25.320Z","level":"INFO","service":"priority-inbox","message":"#3    Placement     Google LLC campus drive                 2026-04-22 17:49:30     3001776860370000"}
+{"timestamp":"2026-05-16T10:11:25.320Z","level":"INFO","service":"priority-inbox","message":"#4    Placement     Microsoft internship 2026               2026-04-22 17:48:54     3001776860334000"}
+{"timestamp":"2026-05-16T10:11:25.320Z","level":"INFO","service":"priority-inbox","message":"#5    Result        mid-sem                                 2026-04-22 17:51:30     2001776860490000"}
+{"timestamp":"2026-05-16T10:11:25.321Z","level":"INFO","service":"priority-inbox","message":"#6    Result        mid-sem                                 2026-04-22 17:50:54     2001776860454000"}
+{"timestamp":"2026-05-16T10:11:25.321Z","level":"INFO","service":"priority-inbox","message":"#7    Result        project-review                          2026-04-22 17:50:42     2001776860442000"}
+{"timestamp":"2026-05-16T10:11:25.321Z","level":"INFO","service":"priority-inbox","message":"#8    Result        external                                2026-04-22 17:50:30     2001776860430000"}
+{"timestamp":"2026-05-16T10:11:25.322Z","level":"INFO","service":"priority-inbox","message":"#9    Result        project-review                          2026-04-22 17:50:18     2001776860418000"}
+{"timestamp":"2026-05-16T10:11:25.323Z","level":"INFO","service":"priority-inbox","message":"#10   Result        project-review                          2026-04-22 17:49:54     2001776860394000"}
+{"timestamp":"2026-05-16T10:11:25.324Z","level":"INFO","service":"priority-inbox","message":"══════════════════════════════════════════════════════════════════════════════════════════\n"}
+{"timestamp":"2026-05-16T10:11:25.324Z","level":"INFO","service":"priority-inbox","message":"=== Priority Inbox — Complete ===","displayed":10}

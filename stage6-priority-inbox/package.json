@@ -1,0 +1,14 @@
+{
+  "name": "priority-inbox",
+  "version": "1.0.0",
+  "description": "Stage 6 – Priority Inbox: Top N most important unread notifications",
+  "main": "priority-inbox.js",
+  "scripts": {
+    "start": "node priority-inbox.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0"
+  },
+  "author": "22MIC0051",
+  "license": "MIT"
+}

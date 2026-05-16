@@ -771,3 +771,75 @@ function push_worker():
 | Idempotency | None | `batch_id` prevents duplicate processing on restart |
 | Observability | None | Every step logged with correlation IDs |
 | DB + Email coupling | Tightly coupled | Fully decoupled via message queue |
+
+---
+
+# Stage 6
+
+## Priority Inbox — Approach & Implementation
+
+### Priority Scoring System
+
+Notifications are ranked using a composite score based on **type weight** and **recency**:
+
+| Type | Weight | Rationale |
+|------|--------|-----------|
+| Placement | 3 | Directly impacts career — highest urgency |
+| Result | 2 | Academic outcomes — time-sensitive |
+| Event | 1 | Informational — lowest urgency |
+
+**Score formula:**
+
+```
+score = (typeWeight × 10^15) + timestamp_in_milliseconds
+```
+
+This guarantees that type is the primary sort key. Within the same type, more recent notifications rank higher.
+
+### Data Structure: Min-Heap of Size N
+
+To find the **top N** out of M notifications efficiently, we use a **Min-Heap** capped at size N:
+
+1. Iterate through all M notifications.
+2. For each notification, compute its priority score.
+3. If the heap has fewer than N items, insert directly — O(log N).
+4. If the heap is full and the new item's score > root (minimum), replace root and heapify down — O(log N).
+5. If the new item's score ≤ root, skip — O(1).
+
+**Time Complexity:** O(M log N) — far better than sorting all M items at O(M log M).
+**Space Complexity:** O(N) — only N items in memory at any time.
+
+### Maintaining Top N with Streaming Data
+
+As new notifications arrive in real-time (via SSE), the top-N list is updated **incrementally**:
+
+1. **Persistent MinHeap in Redis:**
+   ```
+   ZADD priority_inbox:<studentId> <score> <notificationJSON>
+   ZREMRANGEBYRANK priority_inbox:<studentId> 0 -(N+1)
+   ```
+   Redis sorted sets maintain order automatically. `ZREMRANGEBYRANK` trims to keep only top N.
+
+2. **On new notification:**
+   - Compute score
+   - `ZADD` the notification (Redis handles ordering)
+   - Trim if size > N
+   - Cost: O(log N) per insert
+
+3. **On read:**
+   - `ZREVRANGE priority_inbox:<studentId> 0 N-1` returns top N in descending priority
+   - Cost: O(N)
+
+### Implementation
+
+The working code is in `stage6-priority-inbox/priority-inbox.js`. It:
+
+- Fetches notifications from the evaluation API (`http://4.224.186.213/evaluation-service/notifications`)
+- Falls back to sample data matching the API schema if the API returns 401
+- Uses a custom MinHeap to extract top 10 priority notifications
+- Uses the custom logging middleware exclusively (no `console.log`)
+- Outputs a formatted table of the top 10 results
+
+### Output
+
+The program correctly ranks all Placement notifications first (highest priority), followed by Result, then Event. Within each type, more recent notifications appear first.
