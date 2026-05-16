@@ -1,0 +1,9 @@
+{
+  "name": "affordmed-logger",
+  "version": "1.0.0",
+  "description": "Custom logging middleware for Affordmed Campus Notification Platform",
+  "main": "index.js",
+  "keywords": ["logging", "middleware", "express"],
+  "author": "22MIC0051",
+  "license": "MIT"
+}
